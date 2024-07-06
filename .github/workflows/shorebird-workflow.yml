@@ -1,0 +1,36 @@
+name: Shorebird Android
+
+on:
+  push:
+    branches:
+      - releases/*
+
+env:
+  SHOREBIRD_TOKEN: ${{eyJyZWZyZXNoX3Rva2VuIjoiMS8vMGVBNDM1MVROOTcyN0NnWUlBUkFBR0E0U053Ri1MOUlyZDVMc3hMQmk2dERBTnJnTHJudVl1cUczODdTX3J2NndhNHhRM1FZR2pKT2p6T3gtN2xsMG5mdFc4U3BDTHZkS1dSZyIsImF1dGhfcHJvdmlkZXIiOiJnb29nbGUifQ== }}
+
+jobs:
+  shorebird_android:
+    defaults:
+      run:
+        shell: bash
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📚 Git Checkout
+        uses: actions/checkout@v3
+
+      - name: 🐦 Setup Shorebird
+        uses: shorebirdtech/setup-shorebird@v1
+
+      - name: 🚀 Shorebird Release
+        if: ${{ github.event.created }}
+        uses: shorebirdtech/shorebird-release@v0
+        with:
+          platform: android
+
+      - name: 🚀 Shorebird Patch
+        if: ${{ !github.event.created }}
+        uses: shorebirdtech/shorebird-patch@v0
+        with:
+          platform: android
