@@ -6,7 +6,7 @@ on:
       - releases/*
 
 env:
-  SHOREBIRD_TOKEN: ${{eyJyZWZyZXNoX3Rva2VuIjoiMS8vMGVBNDM1MVROOTcyN0NnWUlBUkFBR0E0U053Ri1MOUlyZDVMc3hMQmk2dERBTnJnTHJudVl1cUczODdTX3J2NndhNHhRM1FZR2pKT2p6T3gtN2xsMG5mdFc4U3BDTHZkS1dSZyIsImF1dGhfcHJvdmlkZXIiOiJnb29nbGUifQ== }}
+  SHOREBIRD_TOKEN: ${{ secrets.SHOREBIRD_TOKEN }}
 
 jobs:
   shorebird_android:
